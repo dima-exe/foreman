@@ -94,7 +94,7 @@ class Foreman::CLI < Thor
       @engine ||= begin
         engine_class = Foreman::Engine::CLI
         engine = engine_class.new(
-          :formation => options[:formation],
+          :formation => options[:formation] || options[:concurrency],
           :port      => options[:port],
           :root      => options[:root]
         )
