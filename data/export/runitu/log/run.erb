@@ -4,4 +4,4 @@ set -e
 LOG=<%= log %>/<%= name %>-<%= num %>
 
 test -d "$LOG" || mkdir -p m2750 "$LOG"
-exec chpst svlogd "$LOG"
+exec svlogd "$LOG"
