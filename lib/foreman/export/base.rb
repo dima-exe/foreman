@@ -19,7 +19,7 @@ class Foreman::Export::Base
     error("Must specify a location") unless location
     FileUtils.mkdir_p(location) rescue error("Could not create: #{location}")
     FileUtils.mkdir_p(log) rescue error("Could not create: #{log}")
-    FileUtils.chown(user, nil, log) rescue error("Could not chown #{log} to #{user}")
+    chown_log_dir
   end
 
   def app
@@ -36,6 +36,10 @@ class Foreman::Export::Base
 
 private ######################################################################
 
+  def chown_log_dir
+    FileUtils.chown(user, nil, log) rescue error("Could not chown #{log} to #{user}")
+  end
+
   def error(message)
     raise Foreman::Export::Exception.new(message)
   end
@@ -43,7 +47,7 @@ private ######################################################################
   def say(message)
     puts "[foreman export] %s" % message
   end
-  
+
   def clean(filename)
     return unless File.exists?(filename)
     say "cleaning up: #{filename}"

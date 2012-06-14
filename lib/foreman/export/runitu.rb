@@ -31,4 +31,8 @@ class Foreman::Export::Runitu < Foreman::Export::Base
 
   end
 
+  private
+    def chown_log_dir
+    end
+
 end
