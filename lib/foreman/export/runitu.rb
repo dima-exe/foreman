@@ -16,7 +16,7 @@ class Foreman::Export::Runitu < Foreman::Export::Base
         create_directory "#{process_directory}/env"
         create_directory "#{process_directory}/log"
 
-        write_template "runit/run.erb", "#{process_directory}/run", binding
+        write_template "runitu/run.erb", "#{process_directory}/run", binding
         chmod 0755, "#{process_directory}/run"
 
         port = engine.port_for(process, num)
@@ -24,7 +24,7 @@ class Foreman::Export::Runitu < Foreman::Export::Base
           write_file "#{process_directory}/env/#{key}", value
         end
 
-        write_template "runit/log/run.erb", "#{process_directory}/log/run", binding
+        write_template "runitu/log/run.erb", "#{process_directory}/log/run", binding
         chmod 0755, "#{process_directory}/log/run"
       end
     end
