@@ -1,3 +1,4 @@
 #!/bin/sh
+exec 2>&1
 cd <%= engine.root %>
 exec <%= process.command %>
