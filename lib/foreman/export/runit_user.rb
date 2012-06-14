@@ -1,7 +1,7 @@
 require "erb"
 require "foreman/export"
 
-class Foreman::Export::Runit < Foreman::Export::Base
+class Foreman::Export::RunitUser < Foreman::Export::Base
 
   ENV_VARIABLE_REGEX = /([a-zA-Z_]+[a-zA-Z0-9_]*)=(\S+)/
 
